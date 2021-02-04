@@ -1,0 +1,3 @@
+\l => list all database in postgresql
+\c => move inside a database
+\dt => show table in database
