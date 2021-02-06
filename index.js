@@ -7,6 +7,17 @@ app.use(express.json()) // => req.body : to get access on body of json data
 //-------------- Routes -----------------------//
 
 // get all
+app.get("/getAll", async(req, res) => {
+    try {
+        const allTodos = await pool.query(
+            "SELECT * FROM practice"
+        );
+        res.json(allTodos.rows);
+    }
+    catch(err) {
+        console.error(err.message)
+    }
+})
 
 // get a single
 
