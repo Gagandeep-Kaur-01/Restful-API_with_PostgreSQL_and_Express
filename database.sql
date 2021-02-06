@@ -6,3 +6,5 @@ CREATE TABLE practice(
     prac_id SERIAL PRIMARY KEY,
     description VARCHAR(255)
 )
+
+SELECT * FROM practice;
