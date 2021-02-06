@@ -11,6 +11,24 @@ app.use(express.json()) // => req.body : to get access on body of json data
 // get a single
 
 // create
+app.post("/create", async(req, res) => {
+    try {
+        const { description } = req.body;
+        const newTodo = await pool.query (
+            "INSERT INTO practice (description) VALUES($1) RETURNING * ",  
+            [description]
+            // RETURNING *: letting to return values from after run insert or update statements
+             
+        );
+
+        res.json(newTodo.rows[0]);
+    }  
+    catch (err) {
+        console.error(err.message);
+    }
+  
+})
+
 
 // update
 
