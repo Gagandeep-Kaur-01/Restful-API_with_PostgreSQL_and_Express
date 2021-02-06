@@ -112,6 +112,19 @@ app.get("/departments", async(req, res) => {
     }
 })
 
+//fetch data using join
+app.get("/join", async(req, res) => {
+    try {
+        const joinBoth = await pool.query(            
+            "SELECT EMP_ID, NAME, DEPT FROM COMPANY JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID"        
+        );
+        res.json(joinBoth.rows);
+    }
+    catch(err) {
+        console.error(err.message)
+    }
+})
+
 app.listen(5000, () => {
     console.log("server is listening on port: 5000");
 });
