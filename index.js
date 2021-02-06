@@ -20,6 +20,19 @@ app.get("/getAll", async(req, res) => {
 })
 
 // get a single
+app.get("/getOne/:id", async(req, res) => {
+    try {
+        const {id} = req.params;
+        const todo = await pool.query(
+            "SELECT * FROM practice WHERE prac_id = $1", [id]
+        );
+
+        res.json(todo.rows[0]);
+    } 
+    catch(err) {
+        console.error(err.message)
+    }
+})
 
 // create
 app.post("/create", async(req, res) => {
