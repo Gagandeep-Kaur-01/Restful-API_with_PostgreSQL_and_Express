@@ -99,6 +99,19 @@ app.get("/companies", async(req, res) => {
     }
 })
 
+// get all departments
+app.get("/departments", async(req, res) => {
+    try {
+        const allDepartments = await pool.query(
+            "SELECT * FROM DEPARTMENT"
+        );
+        res.json(allDepartments.rows);
+    }
+    catch(err) {
+        console.error(err.message)
+    }
+})
+
 app.listen(5000, () => {
     console.log("server is listening on port: 5000");
 });
