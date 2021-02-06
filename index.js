@@ -85,6 +85,20 @@ app.delete("/delete/:id", async(req, res) => {
     }
 })
 
+// ---------------------------------------------------------------------------//
+// get all companies record
+app.get("/companies", async(req, res) => {
+    try {
+        const allCompanies = await pool.query(
+            "SELECT * FROM COMPANY"
+        );
+        res.json(allCompanies.rows);
+    }
+    catch(err) {
+        console.error(err.message)
+    }
+})
+
 app.listen(5000, () => {
     console.log("server is listening on port: 5000");
 });
