@@ -55,6 +55,21 @@ app.post("/create", async(req, res) => {
 
 
 // update
+app.put("/update/:id", async(req, res) => {
+    try {
+        const { id } = req.params;
+        const { description } = req.body;
+        const updateTodo = await pool.query(
+            "UPDATE practice SET description = $1 WHERE prac_id = $2",
+            [description, id]
+        );
+
+        res.json("Data was updated!");
+    }
+    catch(err) {
+        console.error(err.message)
+    }
+})
 
 // delete 
 
