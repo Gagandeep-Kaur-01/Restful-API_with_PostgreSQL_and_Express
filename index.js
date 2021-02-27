@@ -19,7 +19,7 @@ app.get("/getAll", async(req, res) => {
     }
 })
 
-// get a single
+// get a single by passing id
 app.get("/getOne/:id", async(req, res) => {
     try {
         const {id} = req.params;
